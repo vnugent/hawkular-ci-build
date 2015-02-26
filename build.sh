@@ -15,7 +15,6 @@ mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
 
 mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
  -Dartifact=${ARTIFACT}\
- -DoutputAbsoluteArtifactFilename=true\
  -DoutputDirectory=.\
  -Dmdep.stripVersion=true\
  -Dmdep.stripClassifier=true
