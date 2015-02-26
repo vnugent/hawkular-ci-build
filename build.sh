@@ -7,11 +7,12 @@ echo "KETTLE_VERSION: ${KETTLE_VERSION}"
 echo "DOCKER_TAG: ${DOCKER_TAG}"
 
 ARTIFACT=org.hawkular:hawkular-kettle:${KETTLE_VERSION}:zip:distribution
+echo "ARTIFACT: ${ARTIFACT}"
 
 #mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
- -DremoteRepositories=${REPO_URL}\
- -Dartifact=${ARTIFACT}\
- -Dtransitive=false
+# -DremoteRepositories=${REPO_URL}\
+# -Dartifact=${ARTIFACT}\
+# -Dtransitive=false
 
 mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
  -Dartifact=${ARTIFACT}\
