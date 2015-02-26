@@ -8,7 +8,7 @@ echo "DOCKER_TAG: ${DOCKER_TAG}"
 
 ARTIFACT=org.hawkular:hawkular-kettle:${KETTLE_VERSION}:zip:distribution
 
-mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
+#mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
  -DremoteRepositories=${REPO_URL}\
  -Dartifact=${ARTIFACT}\
  -Dtransitive=false
