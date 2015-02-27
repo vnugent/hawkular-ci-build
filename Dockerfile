@@ -27,15 +27,16 @@ ENV ARTIFACT=org.hawkular:hawkular-kettle:${KETTLE_VERSION}:zip:distribution
 
 USER root
 
-RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
- -DremoteRepositories=${REPO_URL}\
- -Dartifact=${ARTIFACT}\
- -Dtransitive=false &&\
+RUN cd /opt &&\
+ mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
+  -DremoteRepositories=${REPO_URL}\
+  -Dartifact=${ARTIFACT}\
+  -Dtransitive=false &&\
  mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
- -Dartifact="${ARTIFACT}"\
- -DoutputDirectory=.\
- -Dmdep.stripVersion=true\
- -Dmdep.stripClassifier=true
+  -Dartifact="${ARTIFACT}"\
+  -DoutputDirectory=.\
+  -Dmdep.stripVersion=true\
+  -Dmdep.stripClassifier=true
 
 RUN unzip -qq -d /opt /opt/hawkular-kettle.zip;\
     rm /opt/hawkular-kettle.zip;\
