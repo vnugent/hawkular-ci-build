@@ -17,13 +17,25 @@
 
 # Dockerfile for hawkular-kettle
 
-FROM jboss/base-jdk:8
+FROM vnguyen/docker-maven
 
 MAINTAINER Viet Nguyen <vnguyen@redhat.com>
 
-ADD hawkular-kettle.zip /opt/hawkular-kettle.zip
+ENV REPO_URL=http://snapshots.jboss.org/maven2
+ENV KETTLE_VERSION=1.0.0-SNAPSHOT
+ENV ARTIFACT=org.hawkular:hawkular-kettle:${KETTLE_VERSION}:zip:distribution
 
 USER root
+
+RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
+ -DremoteRepositories=${REPO_URL}\
+ -Dartifact=${ARTIFACT}\
+ -Dtransitive=false &&\
+ mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
+ -Dartifact="${ARTIFACT}"\
+ -DoutputDirectory=.\
+ -Dmdep.stripVersion=true\
+ -Dmdep.stripClassifier=true
 
 RUN unzip -qq -d /opt /opt/hawkular-kettle.zip;\
     rm /opt/hawkular-kettle.zip;\
