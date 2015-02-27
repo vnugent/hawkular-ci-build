@@ -15,6 +15,7 @@ echo "ARTIFACT: ${ARTIFACT}"
 # -Dtransitive=false
 
 mvn -X org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
+ -DremoteRepositories=${REPO_URL}\
  -Dartifact="${ARTIFACT}"\
  -DoutputDirectory=.\
  -Dmdep.stripVersion=true\
