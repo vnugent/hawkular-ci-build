@@ -14,8 +14,8 @@ echo "ARTIFACT: ${ARTIFACT}"
 # -Dartifact=${ARTIFACT}\
 # -Dtransitive=false
 
-mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
- -Dartifact=${ARTIFACT}\
+mvn -X org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
+ -Dartifact="${ARTIFACT}"\
  -DoutputDirectory=.\
  -Dmdep.stripVersion=true\
  -Dmdep.stripClassifier=true
