@@ -16,7 +16,7 @@ ${MVN} org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
  -Dartifact=${ARTIFACT}\
  -Dtransitive=false\
 &&
-${MVN} -X org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
+${MVN} org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
  -Dartifact="${ARTIFACT}"\
  -DoutputDirectory=.\
  -Dmdep.stripVersion=true\
